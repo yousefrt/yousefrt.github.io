@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Chatbot</title>
+  <style>body {
+  font-family: Arial, sans-serif;
+}
+
+.chat-container {
+  width: 300px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.chat-log {
+  height: 200px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+#userInput {
+  width: 200px;
+  padding: 5px;
+}
+
+#sendButton {
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+</style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-log" id="chatLog"></div>
+    <input type="text" id="userInput" placeholder="Type your message..." />
+    <button id="sendButton">Send</button>
+  </div>
+  <script>document.addEventListener("DOMContentLoaded", function() {
+  var chatLog = document.getElementById("chatLog");
+  var userInput = document.getElementById("userInput");
+  var sendButton = document.getElementById("sendButton");
+
+  sendButton.addEventListener("click", function() {
+    var userMessage = userInput.value;
+    displayMessage("User: " + userMessage);
+    getBotResponse(userMessage);
+    userInput.value = "";
+  });
+
+  function displayMessage(message) {
+    var messageElement = document.createElement("p");
+    messageElement.textContent = message;
+    chatLog.appendChild(messageElement);
+  }
+
+  function getBotResponse(userMessage) {
+    // Simulating the retrieval of bot response from a JSON file
+    var botResponse = retrieveBotResponseFromJSON(userMessage);
+    displayMessage("Bot: " + botResponse);
+  }
+
+  function retrieveBotResponseFromJSON(userMessage) {
+    // Simulating JSON retrieval, replace with your own logic
+    var responses = {
+      "hello": "Hello there!",
+      "how are you": "I'm doing fine, thank you!",
+      "goodbye": "Have a great day!"
+    };
+  // Check if userMessage is included in the responses object
+  var matchedResponse = Object.keys(responses).find(function(key) {
+    return userMessage.toLowerCase().includes(key);
+  });
+
+  if (!matchedResponse) {
+    // If no match found, add a punctuation mark and try again
+    var markedMessage = userMessage + "?"; // You can modify the punctuation mark as needed
+    matchedResponse = Object.keys(responses).find(function(key) {
+      return markedMessage.toLowerCase().includes(key);
+    });
+  }
+
+    return responses[userMessage.toLowerCase()] || "Sorry, I didn't understand that.";
+  }
+});
+</script>
+</body>
+</html>
