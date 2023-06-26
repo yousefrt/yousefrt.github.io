@@ -6,7 +6,27 @@ var fileExtension = document.getElementById("fileExtension").value;
 var searchString = "filetype:" + fileExtension + " inurl:" + bookName;
 document.getElementById("result").innerHTML = searchString;
 }</script>
+<style>input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+}
+</style>
 <script async src="https://cse.google.com/cse.js?cx=80103801115e140ac">
 </script>
 <div class="gcse-search"></div>
