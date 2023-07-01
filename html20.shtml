@@ -48,7 +48,7 @@ input[type="submit"]:hover {
 </style>
 </head>
 <body>
-  <h1>make account</h1>
+  <h1>Contact Us</h1>
   <form id="contact-form">
     <div class="form-group">
       <label for="name">Name*</label>
@@ -63,8 +63,8 @@ input[type="submit"]:hover {
       <input type="tel" id="phone" name="phone">
     </div>
     <div class="form-group">
-      <label for="pubg-id">PUBG Mobile ID</label>
-      <input type="text" id="pubg-id" name="pubg-id">
+      <label for="pubg-id">PUBG Mobile ID*</label>
+      <input type="text" id="pubg-id" name="pubg-id" required>
     </div>
     <div class="form-group">
       <label for="new-password">New Password</label>
@@ -74,7 +74,8 @@ input[type="submit"]:hover {
       <input type="submit" value="Submit">
     </div>
   </form>
-  <script>document.getElementById('contact-form').addEventListener('submit', function(e) {
+  <script>
+document.getElementById('contact-form').addEventListener('submit', function(e) {
   e.preventDefault(); // Prevent form submission
 
   // Get form values
@@ -97,6 +98,7 @@ input[type="submit"]:hover {
   // Optionally, you can reset the form fields after submission
   document.getElementById('contact-form').reset();
 });
+
 </script>
 </body>
 </html>
