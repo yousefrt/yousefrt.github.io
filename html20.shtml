@@ -48,7 +48,7 @@ input[type="submit"]:hover {
 </style>
 </head>
 <body>
-  <h1>Contact Us</h1>
+  <h1>Make account </h1>
   <form id="contact-form">
     <div class="form-group">
       <label for="name">Name*</label>
