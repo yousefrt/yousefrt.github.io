@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=auvTMQpf"></script>
+    <title>تجربة ResponsiveVoice API</title>
+</head>
+<body>
+
+    <h1>تجربة تحويل النص إلى صوت</h1>
+
+    <label for="text-input">أدخل النص:</label>
+    <input type="text" id="text-input" placeholder="اكتب شيئًا...">
+
+    <button onclick="speakText()">تحدث</button>
+
+    <script>
+        function speakText() {
+            // الحصول على قيمة النص المدخل
+            var textInput = document.getElementById('text-input').value;
+
+            // استخدام ResponsiveVoice لتحويل النص إلى صوت
+                       responsiveVoice.speak(textInput, 'UK English Female');
+// يمكنك تغيير 'Arabic Male' إلى 'Arabic Female' حسب اختيارك
+        }
+    </script>
+
+</body>
+</html>
