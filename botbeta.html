@@ -23,7 +23,7 @@ frameborder="0"
         var iframeDocument = document.getElementById('myIframe').contentDocument || document.getElementById('myIframe').contentWindow.document;
 
         // Find and remove the specific text
-        var elementsWithText = iframeDocument.querySelectorAll(':contains("NOT Powered By Chatbase.co")');
+        var elementsWithText = iframeDocument.querySelectorAll(':contains("Powered By Chatbase.co")');
         elementsWithText.forEach(function(element) {
             element.innerHTML = element.innerHTML.replace('Powered By Chatbase.co', '');
         });
