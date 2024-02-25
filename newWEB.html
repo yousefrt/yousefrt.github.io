@@ -1,1 +1,82 @@
-<!DOCTYPE html> <html lang="en"> <head>   <meta charset="UTF-8">   <meta name="viewport" content="width=device-width, initial-scale=1.0">   <title>Contact Form</title>   <style>   .container {   max-width: 600px;   margin: 0 auto;   padding: 20px;   border: 1px solid #ccc;   border-radius: 5px; }  label {   font-weight: bold; }  textarea {   width: 100%;   padding: 10px;   margin-bottom: 10px; }  button {   padding: 10px 20px;   background-color: #007bff;   color: #fff;   border: none;   cursor: pointer; }  button:hover {   background-color: #0056b3; }    </style> </head> <body>   <div class="container">     <h2>اكتب الاجابه</h2>     <form id="contactForm">       <label for="message">هنا:</label><br>       <textarea id="message" name="message" rows="4" cols="50"></textarea><br>       <button type="submit">Submit</button>     </form>     <div id="ipDisplay"></div>    </div>  <script> document.getElementById('contactForm').addEventListener('submit', function(event) {   event.preventDefault();    // Get user message   var message = document.getElementById('message').value;    // Get user IP address   fetch('https://api.ipify.org?format=json')     .then(response => response.json())     .then(data => {       var ipAddress = data.ip;        // Display IP address on the page       var ipDisplay = document.getElementById('ipDisplay');       ipDisplay.innerHTML = '<p>Your User Code: ' + ipAddress + '</p>';        // Send email       var emailContent = 'User IP Address: ' + ipAddress + '\n\nMessage:\n' + message;       var emailSubject = 'New Message from User';        // Open email link in a new window       var emailLink = 'mailto:youseffo2fo2@gmail.com?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailContent);       window.open(emailLink, '_blank');     })     .catch(error => {       console.error('Error fetching IP address:', error);     }); }); </script>  </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <style>
+  .container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>اكتب الاجابه</h2>
+    <form id="contactForm">
+      <label for="message">هنا:</label><br>
+      <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="ipDisplay"></div>
+
+  </div>
+
+  <script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Get user message
+  var message = document.getElementById('message').value;
+
+  // Get user IP address
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      var ipAddress = data.ip;
+
+      // Display IP address on the page
+      var ipDisplay = document.getElementById('ipDisplay');
+      ipDisplay.innerHTML = '<p>Your User Code: ' + ipAddress + '</p>';
+
+      // Send email
+      var emailContent = 'User IP Address: ' + ipAddress + '\n\nMessage:\n' + message;
+      var emailSubject = 'New Message from User';
+
+      window.location.href = 'mailto:youseffo2fo2@gmail.com?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailContent);
+    })
+    .catch(error => {
+      console.error('Error fetching IP address:', error);
+    });
+});
+
+  </script>
+</body>
+</html>
