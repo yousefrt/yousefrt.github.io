@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+        #chatbox {
+            height: 300px;
+            width: 300px;
+            border: 1px solid black;
+            overflow: auto;
+        }
+        #userInput {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+  <script>
+    // Dynamically create link element for Google Fonts
+    var link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap';
+    link.rel = 'stylesheet';
+
+    // Append link element to the head of the document
+    document.head.appendChild(link);
+
+    // Apply Cairo font to the html tag
+    document.documentElement.style.fontFamily = 'Cairo, sans-serif';
+  </script>
+    <h1>Chat</h1>
+    <div id="chatbox"></div>
+    <input id="userInput" type="text" />
+    <button id="btn">Send</button>
+
+    <script>
+        var chatHistory = [];
+        
+        function sendMessage(userInput) {
+            var xhr = new XMLHttpRequest();
+            var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAsVSMwKNr47BU-N1Ov95a_QZLh7lwPlFo";
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+                    if (json.candidates && json.candidates[0].content.parts && json.candidates[0].content.parts[0].text) {
+                        var text = json.candidates[0].content.parts[0].text;
+                        var chatbox = document.getElementById('chatbox');
+                        chatbox.innerHTML += '<p><strong>Assistant:</strong> ' + text + '</p>';
+                        chatbox.scrollTop = chatbox.scrollHeight;
+                        chatHistory.push({"role": "model", "parts": [{"text": text}]});
+                    } else {
+                        console.log('Unexpected response:', json);
+                    }
+                }
+            };
+            chatHistory.push({"role": "user", "parts": [{"text": userInput}]});
+            var data = JSON.stringify({"contents": chatHistory});
+            xhr.send(data);
+            var chatbox = document.getElementById('chatbox');
+            chatbox.innerHTML += '<p><strong>You:</strong> ' + userInput + '</p>';
+            document.getElementById('userInput').value = '';
+        }
+
+        document.getElementById('btn').addEventListener('click', function() {
+            var userInput = document.getElementById('userInput').value;
+            sendMessage(userInput);
+        });
+
+        // Send a message at the start of the chat
+        sendMessage("مرحبًا، أنا متعلم وأود أن أشرح لك ما تعلمته حديثًا. أرجو أن تكون متعاونًا وأن تحاول طرح سؤال كل 5 رسائل حول الموضوع الذي أشرح لك. سأبذل قصارى جهدي لشرح كل شيء بتفصيل وأتطلع إلى مناقشة موضوعك معك.");
+    </script>
+</body>
+</html>
