@@ -11,6 +11,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow-y: auto; /* Enable vertical scrolling */
   max-height: 400px; /* Limit maximum height to enable scrolling */
+  direction: auto; /* Set direction to auto */
 }
 
 #chatbox p {
@@ -49,6 +50,34 @@
   #chatbox {
     width: 90%;
   }
+}
+
+/* Style for input */
+.user-input {
+  margin-top: 20px;
+}
+
+.user-input input[type="text"] {
+  width: calc(100% - 70px); /* Adjust based on your layout */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.user-input button {
+  width: 60px;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.user-input button:hover {
+  background-color: #0056b3;
 }
 
     </style>
