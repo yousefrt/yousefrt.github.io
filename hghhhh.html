@@ -2,6 +2,12 @@
 <html>
 <head>
     <style>
+.center {
+  margin: auto;
+  width: 60%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+}
 #chatbox {
   width: 70%;
   margin: 20px auto;
@@ -126,8 +132,10 @@
   </script>
     <h1>Chat</h1>
     <div id="chatbox"></div>
+    <div class="center">
     <input id="userInput" type="text" />
     <button id="btn" class="button-19">Send</button>
+</div>
 
     <script>
         var chatHistory = [];
