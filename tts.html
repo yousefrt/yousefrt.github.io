@@ -5,9 +5,9 @@
 	</head>
 	<body>
 		<gradio-lite>
-        import gradio as gr
-        def image(prompt):
-        gr.load("models/ehristoforu/dalle-3-xl-v2").launch()
+import gradio as gr
+
+gr.load("models/ehristoforu/dalle-3-xl-v2").launch()
 
 		gr.Interface(greet, "textbox", "textbox").launch()
 		</gradio-lite>
