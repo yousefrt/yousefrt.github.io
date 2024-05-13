@@ -5,11 +5,14 @@
 	</head>
 	<body>
 		<gradio-lite>
-import gradio as gr
+from gradio_client import Client
 
-gr.load("models/ehristoforu/dalle-3-xl-v2").launch()
-
-		gr.Interface(greet, "textbox", "textbox").launch()
+client = Client("yousef4/ehristoforu-dalle-3-xl-v2")
+result = client.predict(
+		param_0="Hello!!",
+		api_name="/predict"
+)
+print(result)
 		</gradio-lite>
 	</body>
 </html>
