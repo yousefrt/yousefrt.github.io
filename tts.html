@@ -1,30 +1,32 @@
-<!DOCTYPE html>
-<html dir="rtl" lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.responsivevoice.org/responsivevoice.js?key=auvTMQpf"></script>
-    <title>تجربة ResponsiveVoice API</title>
-</head>
-<body>
+<html>
+	<head>
+		<script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@gradio/lite/dist/lite.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gradio/lite/dist/lite.css" />
+	</head>
+	<body>
+		<gradio-lite>
+        import gradio as gr
+        def image(prompt):
+        gr.load("models/ehristoforu/dalle-3-xl-v2").launch()
 
-    <h1>تجربة تحويل النص إلى صوت</h1>
+		gr.Interface(greet, "textbox", "textbox").launch()
+		</gradio-lite>
+	</body>
+</html>
 
-    <label for="text-input">أدخل النص:</label>
-    <input type="text" id="text-input" placeholder="اكتب شيئًا...">
+<html>
+	<head>
+		<script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@gradio/lite/dist/lite.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@gradio/lite/dist/lite.css" />
+	</head>
+	<body>
+		<gradio-lite>
+		import gradio as gr
 
-    <button onclick="speakText()">تحدث</button>
+		def greet(name):
+			return "Hello, " + name + "!"
 
-    <script>
-        function speakText() {
-            // الحصول على قيمة النص المدخل
-            var textInput = document.getElementById('text-input').value;
-
-            // استخدام ResponsiveVoice لتحويل النص إلى صوت
-                       responsiveVoice.speak(textInput, 'UK English Female');
-// يمكنك تغيير 'Arabic Male' إلى 'Arabic Female' حسب اختيارك
-        }
-    </script>
-
-</body>
+		gr.Interface(greet, "textbox", "textbox").launch()
+		</gradio-lite>
+	</body>
 </html>
