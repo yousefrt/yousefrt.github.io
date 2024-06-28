@@ -1,1 +1,1 @@
-mkdir cat
+del cat
